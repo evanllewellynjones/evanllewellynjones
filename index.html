@@ -50,6 +50,8 @@ a:focus-visible{outline:2px solid var(--glacier);outline-offset:2px}
 .mgmt dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
 .mgmt dd{margin:0;min-width:0;overflow-wrap:anywhere}
 code{font-family:var(--mono);font-size:.82em;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:0 4px}
+.steps{margin:6px 0 0;padding-left:18px;display:grid;gap:6px;color:var(--muted)}
+.steps b{color:var(--ink)}
 .flag{grid-column:1/-1;font-size:.86rem;color:var(--warn);background:var(--warn-bg);padding:7px 10px;border-radius:4px}
 footer{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
 @media (max-width:700px){.proj{grid-template-columns:1fr}.mgmt{grid-template-columns:84px 1fr}}
@@ -156,8 +158,12 @@ footer{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
         <dt>Repo</dt><dd>None, on purpose. Files are dropped straight into Netlify so nothing sits in a GitHub repo.</dd>
         <dt>Access</dt><dd>Netlify password. A link from here doesn't expose it.</dd>
         <dt>Commentary</dt><dd><b>Monthly Financial Commentaries</b> (Claude Project): produces each month's written financial commentary</dd>
-        <dt>Spending</dt><dd><b>Jones Spending</b> (Claude Project): tracks and summarizes household spending</dd>
-        <dt>Updates</dt><dd>Updated pages are deployed by drag-and-drop in Netlify</dd>
+        <dt>Spending</dt><dd><b>Jones Spending</b> (Claude Project). Each month the updated workbook goes in, with the 2026 Expenses tab filled through the month just closed. Two outputs:
+          <ol class="steps">
+            <li><b>Dashboard.</b> <code>build.py</code> reruns on the whole 2026 tab, because earlier months get adjusted, and rebuilds <code>2026_spending_review.html</code>. It ships only when the four reconciliation checks pass and every category × month matches workbook columns K–V.</li>
+            <li><b>Commentary.</b> <code>report.py</code> pulls the six personal categories plus Subscriptions and Subscription-annual. Claude writes the notes into <code>highlights_&lt;YYYY-MM&gt;.json</code>, and <code>gen.js</code> turns them into <code>Spending_Commentary_&lt;Month&gt;_2026.docx</code>, which is rendered to PDF and checked page by page.</li>
+          </ol></dd>
+        <dt>Deploy</dt><dd>The dashboard HTML goes to Netlify only, never GitHub. Once the PDF is saved, its exact filename goes back into the dashboard so the commentary link points to the right file.</dd>
       </dl>
     </article>
 
