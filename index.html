@@ -3,398 +3,168 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Alaska itinerary as booked, Aug 19–28, 2027: Fairbanks, GoldStar rail to Denali and Anchorage, Seward, Kenai Fjords Glacier Lodge, Lake Clark bears.">
-<title>Alaska Rail &amp; Fjords 2027</title>
+<meta name="description" content="Evan Llewellyn Jones: personal pages and a running list of projects.">
+<title>Evan Llewellyn Jones</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: railway timetable — route map, day-by-day ledger, booking, stays, flights, open items */
 :root{
   --bg:#F2F5F4; --surface:#FFFFFF; --ink:#16241F; --muted:#56655F; --line:#D5DEDA;
-  --spruce:#1F4D3E; --glacier:#2E7A93; --fireweed:#B8306A; --warn:#9A5B00; --warn-bg:#FBF1DF; --ok:#2F6B3A; --ok-bg:#E6F2E7;
+  --spruce:#1F4D3E; --glacier:#2E7A93; --fireweed:#B8306A; --warn:#9A5B00; --warn-bg:#FBF1DF;
   --display:"Big Shoulders Display", "Arial Narrow", sans-serif;
   --body:"IBM Plex Sans", system-ui, sans-serif;
   --mono:"IBM Plex Mono", ui-monospace, monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+@media (prefers-color-scheme: dark){:root{
   --bg:#0F1715; --surface:#16211E; --ink:#E4ECE8; --muted:#97A8A1; --line:#2A3A35;
-  --spruce:#6FBF9D; --glacier:#69B8D2; --fireweed:#E2719F; --warn:#E8B04F; --warn-bg:#2A2214; --ok:#8FD19A; --ok-bg:#16291A; color-scheme:dark}}
+  --spruce:#6FBF9D; --glacier:#69B8D2; --fireweed:#E2719F; --warn:#E8B04F; --warn-bg:#2A2214; color-scheme:dark}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
-img{max-width:100%}
-.wrap{max-width:980px;margin:0 auto;padding-inline:20px;padding-block:40px 64px;display:grid;gap:48px}
-h1,h2{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:.01em}
-h1{font-size:clamp(2.6rem,7vw,4.4rem);font-weight:800;line-height:.95;text-transform:uppercase}
-h2{font-size:1.7rem;font-weight:800;text-transform:uppercase;color:var(--spruce)}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;padding-block:48px 64px;display:grid;gap:48px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:.01em;text-transform:uppercase;font-weight:800}
+h1{font-size:clamp(2.6rem,8vw,4.6rem);line-height:.95}
+h2{font-size:1.7rem;color:var(--spruce)}
 .eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fireweed)}
 header{display:grid;gap:14px}
-.lede{color:var(--muted);max-width:64ch;margin:0}
+.lede{color:var(--muted);max-width:62ch;margin:0}
 section{display:grid;gap:18px}
-.intro{margin:0;max-width:70ch}
-
-/* map */
-.mapwrap{display:grid;max-width:520px;width:100%;margin:0 auto}
-.map{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px}
-.map svg{display:block;width:100%;height:auto;max-height:780px}
-.map .lbl{font-family:var(--display);font-weight:800;font-size:19px;text-transform:uppercase;fill:var(--ink)}
-.map .sub{font-family:var(--mono);font-size:10.5px;fill:var(--muted)}
-.map .grid{stroke:var(--line);stroke-width:1}
-.map .gridt{font-family:var(--mono);font-size:9px;fill:var(--muted)}
-.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-top:8px}
-.legend i{display:inline-block;width:22px;height:0;border-top:3px solid;vertical-align:middle;margin-right:6px}
-
-/* ledger */
-.ledger{display:grid;border-top:2px solid var(--ink)}
-.day{display:grid;grid-template-columns:96px 1fr;gap:18px;padding-block:18px;border-bottom:1px solid var(--line)}
-.date{font-family:var(--mono);font-size:.8rem;color:var(--muted);line-height:1.4}
-.date b{display:block;font-family:var(--display);font-size:1.9rem;font-weight:800;color:var(--ink);line-height:1}
-.body{min-width:0;display:grid;gap:6px}
-.body h3{margin:0;font-size:1.05rem;font-weight:600}
-.body p{margin:0;color:var(--muted);max-width:70ch}
-.tl{list-style:none;margin:2px 0 0;padding:0;display:grid;gap:3px;font-size:.92rem}
-.tl li{display:grid;grid-template-columns:78px 1fr;gap:10px}
-.tl .t{font-family:var(--mono);font-size:.78rem;color:var(--glacier);font-variant-numeric:tabular-nums;padding-top:2px}
-.tl .bk{font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;color:var(--ok);border:1px solid currentColor;border-radius:3px;padding:0 5px;margin-left:6px;white-space:nowrap}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
-.tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;padding:2px 8px;border-radius:3px;border:1px solid var(--line);color:var(--muted)}
-.tag.stay{color:var(--spruce);border-color:currentColor}
-.tag.move{color:var(--glacier);border-color:currentColor}
-.tag.act{color:var(--fireweed);border-color:currentColor}
-.tag.opt{color:var(--warn);border-color:currentColor;border-style:dashed}
-.flag{font-size:.86rem;color:var(--warn);background:var(--warn-bg);padding:7px 10px;border-radius:4px;max-width:70ch}
-.ok{font-size:.86rem;color:var(--ok);background:var(--ok-bg);padding:7px 10px;border-radius:4px;max-width:70ch}
-.option{font-size:.88rem;border:1px dashed var(--warn);border-radius:6px;padding:10px 12px;max-width:70ch;display:grid;gap:4px}
-.option b.k{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--warn)}
-.option p{margin:0;color:var(--muted)}
-
-/* booking table */
-.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
-table{border-collapse:collapse;width:100%;min-width:640px;font-size:.88rem}
-th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
-th{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
-tr:last-child td{border-bottom:0}
-td:first-child{font-family:var(--mono);font-size:.8rem;white-space:nowrap;color:var(--muted)}
-td .v{display:inline-block;font-family:var(--mono);font-size:.68rem;padding:1px 7px;border-radius:3px;border:1px solid currentColor;white-space:nowrap}
-.v.bkd{color:var(--ok)}.v.opt{color:var(--warn)}.v.todo{color:var(--fireweed)}
-.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 28px;margin:0}
-.terms div{min-width:0}
-.terms dt{font-weight:600}
-.terms dd{margin:2px 0 0;color:var(--muted)}
-
-/* cards */
-.stays{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px;display:grid;gap:8px;align-content:start;min-width:0}
-.card h3{margin:0;font-size:1.05rem;font-weight:600}
-.card h3 a{color:inherit;text-decoration-color:var(--glacier);text-underline-offset:3px}
-.card p{margin:0;color:var(--muted)}
-.card .hl{color:var(--ink)}
-.chip{justify-self:start;font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;padding:2px 8px;border-radius:3px;border:1px solid currentColor;color:var(--ok)}
-
-/* flights */
-.flights{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-.flt{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px;display:grid;gap:10px;min-width:0}
-.flt h3{margin:0;font-size:.95rem;font-weight:600}
-.leg{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;font-family:var(--mono);font-variant-numeric:tabular-nums}
-.leg .code{font-family:var(--display);font-size:1.6rem;font-weight:800}
-.leg .t{font-size:.78rem;color:var(--muted)}
-.leg .line{height:1px;background:var(--line);position:relative}
-.leg .line span{position:absolute;left:50%;top:-9px;transform:translateX(-50%);background:var(--surface);padding:0 6px;font-size:.68rem;color:var(--muted);white-space:nowrap}
-.flt .meta{font-family:var(--mono);font-size:.75rem;color:var(--fireweed)}
-.flt p{margin:0;color:var(--muted);font-size:.88rem}
-
-/* lists */
-.items{display:grid;gap:10px;padding:0;margin:0;list-style:none;counter-reset:i}
-.items li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
-.items li::before{counter-increment:i;content:counter(i);font-family:var(--mono);font-size:.75rem;color:var(--warn);border:1px solid currentColor;border-radius:50%;width:22px;height:22px;display:grid;place-items:center}
-.items b{font-weight:600}
-.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:4px 28px;padding:0;margin:0;list-style:none}
-.links li{padding-block:8px;border-bottom:1px solid var(--line);display:grid;gap:2px;min-width:0}
-.links a{color:var(--ink);font-weight:500;text-decoration-color:var(--glacier);text-underline-offset:3px}
-.links span{font-family:var(--mono);font-size:.72rem;color:var(--muted);overflow-wrap:anywhere}
 a{color:var(--glacier)}
 a:focus-visible{outline:2px solid var(--glacier);outline-offset:2px}
+
+/* quick links */
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;padding:0;margin:0;list-style:none}
+.links a{display:grid;gap:4px;height:100%;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--ink)}
+.links a:hover{border-color:var(--glacier)}
+.links b{font-weight:600}
+.links span{font-family:var(--mono);font-size:.72rem;color:var(--muted);overflow-wrap:anywhere}
+.links .lock{color:var(--warn)}
+
+/* projects */
+.projects{display:grid;border-top:2px solid var(--ink)}
+.proj{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:10px 32px;padding-block:22px;border-bottom:1px solid var(--line)}
+.proj h3{margin:0;font-size:1.15rem;font-weight:600}
+.proj h3 a{color:inherit;text-decoration-color:var(--glacier);text-underline-offset:3px}
+.proj .url{font-family:var(--mono);font-size:.75rem;color:var(--muted);margin:2px 0 8px;overflow-wrap:anywhere}
+.proj p{margin:0;color:var(--muted);max-width:60ch}
+.mgmt{margin:0;display:grid;grid-template-columns:96px 1fr;gap:6px 14px;font-size:.88rem;align-content:start}
+.mgmt dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.mgmt dd{margin:0;min-width:0;overflow-wrap:anywhere}
+code{font-family:var(--mono);font-size:.82em;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:0 4px}
+.flag{grid-column:1/-1;font-size:.86rem;color:var(--warn);background:var(--warn-bg);padding:7px 10px;border-radius:4px}
 footer{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
-@media (max-width:560px){.day{grid-template-columns:1fr;gap:6px}.date b{display:inline;margin-right:8px}.tl li{grid-template-columns:64px 1fr}}
+@media (max-width:700px){.proj{grid-template-columns:1fr}.mgmt{grid-template-columns:84px 1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
+
 <header>
-  <div class="eyebrow">Aug 19 – 28, 2027 · Evan &amp; Morgan Jones · Booked with Alaska Tours</div>
-  <h1>Alaska Rail &amp;<br>Fjords</h1>
-  <p class="lede">Fly into Fairbanks, GoldStar dome rail south to Denali, on to Anchorage, then the Coastal Classic to Seward and two nights at the only lodge inside Kenai Fjords National Park. Finish with a floatplane day among the brown bears of Lake Clark and a food and history walk through downtown Anchorage.</p>
+  <div class="eyebrow">Durham, NC · Personal pages</div>
+  <h1>Evan Llewellyn<br>Jones</h1>
+  <p class="lede">Trip plans, business ideas, a painting notebook and the family finances. Links to each site, and how each one is built and run.</p>
 </header>
 
 <section>
-  <h2>Route</h2>
-  <div class="mapwrap">
-    <figure class="map">
-      <svg viewBox="0 0 500 870" role="img" aria-label="Schematic map: Fairbanks, Denali, Anchorage, Seward, Kenai Fjords Glacier Lodge, and a flight to Lake Clark">
-        <g>
-          <line class="grid" x1="0" x2="500" y1="20" y2="20"/><text class="gridt" x="496" y="16" text-anchor="end">65°N</text>
-          <line class="grid" x1="0" x2="500" y1="170" y2="170"/><text class="gridt" x="496" y="166" text-anchor="end">64°N</text>
-          <line class="grid" x1="0" x2="500" y1="320" y2="320"/><text class="gridt" x="496" y="316" text-anchor="end">63°N</text>
-          <line class="grid" x1="0" x2="500" y1="470" y2="470"/><text class="gridt" x="496" y="466" text-anchor="end">62°N</text>
-          <line class="grid" x1="0" x2="500" y1="620" y2="620"/><text class="gridt" x="496" y="616" text-anchor="end">61°N</text>
-          <line class="grid" x1="0" x2="500" y1="770" y2="770"/><text class="gridt" x="496" y="766" text-anchor="end">60°N</text>
-        </g>
-        <polyline points="413,51 316,93 325,198 329,218 326,269 281,329 245,429 292,540 259,594" fill="none" stroke="var(--spruce)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        <polyline points="259,594 314,633 324,653 297,704 292,762" fill="none" stroke="var(--spruce)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 7"/>
-        <polyline points="292,762 300,795 284,822 272,794" fill="none" stroke="var(--glacier)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5"/>
-        <path d="M259,594 Q150,620 62,717" fill="none" stroke="var(--fireweed)" stroke-width="3" stroke-dasharray="8 6"/>
-        <path d="M500,20 L425,45" fill="none" stroke="var(--fireweed)" stroke-width="2" stroke-dasharray="3 4"/>
-        <g>
-          <circle cx="413" cy="51" r="8" fill="var(--glacier)" stroke="var(--surface)" stroke-width="3"/>
-          <text class="lbl" x="400" y="34" text-anchor="end">Fairbanks</text>
-          <text class="sub" x="400" y="48" text-anchor="end">Aug 19 · 1 nt · fly in</text>
-          <circle cx="329" cy="218" r="8" fill="var(--glacier)" stroke="var(--surface)" stroke-width="3"/>
-          <text class="lbl" x="344" y="216">Denali</text>
-          <text class="sub" x="344" y="230">Aug 20–22 · 2 nts</text>
-          <circle cx="245" cy="429" r="3.5" fill="var(--spruce)"/>
-          <text class="sub" x="232" y="433" text-anchor="end">Talkeetna</text>
-          <circle cx="259" cy="594" r="8" fill="var(--glacier)" stroke="var(--surface)" stroke-width="3"/>
-          <text class="lbl" x="246" y="586" text-anchor="end">Anchorage</text>
-          <text class="sub" x="246" y="560" text-anchor="end">Aug 22 · Aug 26–28</text>
-          <circle cx="314" cy="633" r="3.5" fill="var(--spruce)"/>
-          <text class="sub" x="326" y="637">Girdwood</text>
-          <circle cx="292" cy="762" r="8" fill="var(--glacier)" stroke="var(--surface)" stroke-width="3"/>
-          <text class="lbl" x="308" y="760">Seward</text>
-          <text class="sub" x="308" y="774">Aug 23 · 1 nt</text>
-          <circle cx="272" cy="794" r="6" fill="var(--surface)" stroke="var(--glacier)" stroke-width="3"/>
-          <text class="sub" x="258" y="808" text-anchor="end">Glacier Lodge</text>
-          <text class="sub" x="258" y="821" text-anchor="end">Aug 24–26 · 2 nts</text>
-          <circle cx="62" cy="717" r="6" fill="var(--surface)" stroke="var(--fireweed)" stroke-width="3"/>
-          <text class="sub" x="62" y="740" text-anchor="middle">Lake Clark (approx.)</text>
-          <text class="sub" x="62" y="753" text-anchor="middle">bear day · Aug 27</text>
-          <text class="sub" x="336" y="150">Denali Star · Aug 20</text>
-          <text class="sub" x="290" y="490">Denali Star · Aug 22</text>
-          <text class="sub" x="340" y="700">Coastal Classic</text>
-          <text class="sub" x="340" y="713">Aug 23 / Aug 26</text>
-          <text class="sub" x="496" y="58" text-anchor="end">flight in</text>
-        </g>
-      </svg>
-      <figcaption class="legend"><span><i style="color:var(--spruce)"></i>Denali Star</span><span><i style="color:var(--spruce);border-top-style:dotted"></i>Coastal Classic</span><span><i style="color:var(--glacier);border-top-style:dashed"></i>Lodge boat</span><span><i style="color:var(--fireweed);border-top-style:dashed"></i>Flight</span><span>Schematic; positions approximate</span></figcaption>
-    </figure>
-  </div>
-</section>
-
-<section>
-  <h2>Day by Day</h2>
-  <div class="ledger">
-
-    <div class="day"><div class="date"><b>19</b>Thu</div><div class="body">
-      <h3>Fly to Fairbanks</h3>
-      <p>Flights not booked yet. Aim for a daytime 1-stop that lands by early evening; the train leaves at 8:20 the next morning.</p>
-      <div class="tags"><span class="tag move">Flight · to book</span><span class="tag stay">Pike's Waterfront Lodge · Chena River Room</span></div>
-      <div class="ok">Hotel booked. Pike's runs a free airport and train-depot shuttle; ask for the morning run to the 8:20 AM train.</div>
-    </div></div>
-
-    <div class="day"><div class="date"><b>20</b>Fri</div><div class="body">
-      <h3>Denali Star to Denali · ATV</h3>
-      <ul class="tl">
-        <li><span class="t">7:20 AM</span><span>At the Fairbanks depot (1745 Johansen Expwy)</span></li>
-        <li><span class="t">8:20 AM</span><span>Denali Star, GoldStar dome car, southbound<span class="bk">Booked</span></span></li>
-        <li><span class="t">12:10 PM</span><span>Arrive Denali Park depot; lodge shuttle up Sugarloaf Mountain</span></li>
-        <li><span class="t">3:00 PM</span><span>Denali Wilderness Adventure ATV Tour, single ATV each<span class="bk">Booked</span></span></li>
-      </ul>
-      <div class="tags"><span class="tag move">Train · GoldStar</span><span class="tag act">ATV</span><span class="tag stay">Grande Denali Lodge</span></div>
-    </div></div>
-
-    <div class="day"><div class="date"><b>21</b>Sat</div><div class="body">
-      <h3>Heli-hike · evening off-trail hike</h3>
-      <ul class="tl">
-        <li><span class="t">10:35 AM</span><span>Heli Hiking Adventure: helicopter from the park entrance, then a guided hike<span class="bk">Booked</span></span></li>
-        <li><span class="t">5:00 PM</span><span>Wilderness Wonders, 4-hour off-trail interpretive nature walk. Back around 9 PM, still in daylight.<span class="bk">Booked</span></span></li>
-      </ul>
-      <div class="tags"><span class="tag act">Heli-hike</span><span class="tag act">Hike</span><span class="tag stay">Grande Denali Lodge</span></div>
-      <div class="flag">Heli-hike is booked for passengers under 250 lb each; the operator will ask for weights.</div>
-    </div></div>
-
-    <div class="day"><div class="date"><b>22</b>Sun</div><div class="body">
-      <h3>Denali Star to Anchorage</h3>
-      <ul class="tl">
-        <li><span class="t">10:00 AM</span><span>Lodge check-out; bags to the depot</span></li>
-        <li><span class="t">12:30 PM</span><span>Denali Star, GoldStar, Denali → Anchorage via Talkeetna<span class="bk">Booked</span></span></li>
-        <li><span class="t">8:00 PM</span><span>Arrive Anchorage depot; 5 minutes to the hotel</span></li>
-      </ul>
-      <div class="tags"><span class="tag move">Train · GoldStar</span><span class="tag stay">Hotel Captain Cook · Deluxe Room</span></div>
-    </div></div>
-
-    <div class="day"><div class="date"><b>23</b>Mon</div><div class="body">
-      <h3>Coastal Classic to Seward · open afternoon</h3>
-      <ul class="tl">
-        <li><span class="t">5:45 AM</span><span>At the Anchorage depot</span></li>
-        <li><span class="t">6:45 AM</span><span>Coastal Classic, GoldStar, along Turnagain Arm<span class="bk">Booked</span></span></li>
-        <li><span class="t">11:05 AM</span><span>Arrive Seward (2026 timetables show 11:05 or 11:20). Harbor 360 shuttle; drop bags</span></li>
-        <li><span class="t">Afternoon</span><span>Free. The only open block on the trip.</span></li>
-      </ul>
-      <div class="tags"><span class="tag move">Train · GoldStar</span><span class="tag opt">Fishing · option</span><span class="tag stay">Harbor 360 Hotel · Harbor View</span></div>
-      <div class="option">
-        <b class="k">Option · book separately</b>
-        <p><a href="https://www.jdockcompany.com/" target="_blank" rel="noopener">J-Dock Sport Fishing</a>, 1406 4th Ave, Seward (907-224-3300). The half-day salmon/rockfish trip ($250 per person, plus 7% tax and a $3.50 Seward Harbor fee) is the one that fits: the full-day combo leaves too early and the ¾-day runs Wednesdays only. A private charter is priced by phone.</p>
-        <p>The site doesn't list departure times. Call to confirm an afternoon half-day leaving after about 12:30 PM. Fishing licenses are not included in the Alaska Tours package.</p>
-      </div>
-    </div></div>
-
-    <div class="day"><div class="date"><b>24</b>Tue</div><div class="body">
-      <h3>Cruise to Kenai Fjords Glacier Lodge</h3>
-      <ul class="tl">
-        <li><span class="t">9:15 AM</span><span>Check in at the Seward harbor</span></li>
-        <li><span class="t">10:00 AM</span><span>Lodge boat departs: 4–5 hour wildlife and tidewater-glacier cruise<span class="bk">Booked</span></span></li>
-        <li><span class="t">Afternoon</span><span>Arrive Pedersen Lagoon in Aialik Bay. Guided hike or sea kayak</span></li>
-      </ul>
-      <div class="tags"><span class="tag move">Boat</span><span class="tag act">Hike / kayak</span><span class="tag stay">Kenai Fjords Glacier Lodge</span></div>
-    </div></div>
-
-    <div class="day"><div class="date"><b>25</b>Wed</div><div class="body">
-      <h3>Full day at the lodge</h3>
-      <p>Lodge program: kayaking in Aialik Bay, canoeing Pedersen Lagoon, hiking to the face of Pedersen Glacier.</p>
-      <div class="tags"><span class="tag act">Kayak · canoe · hike</span><span class="tag stay">Kenai Fjords Glacier Lodge</span></div>
-    </div></div>
-
-    <div class="day"><div class="date"><b>26</b>Thu</div><div class="body">
-      <h3>Boat to Seward · train to Anchorage</h3>
-      <ul class="tl">
-        <li><span class="t">Morning</span><span>Last activity at the lodge, then lunch</span></li>
-        <li><span class="t">5:00–5:30 PM</span><span>Return cruise lands in Seward; transfer to the depot</span></li>
-        <li><span class="t">6:00 PM</span><span>Coastal Classic, GoldStar, Seward → Anchorage<span class="bk">Booked</span></span></li>
-        <li><span class="t">10:15 PM</span><span>Arrive Anchorage</span></li>
-      </ul>
-      <div class="tags"><span class="tag move">Boat</span><span class="tag move">Train · GoldStar</span><span class="tag stay">The Wildbirch Hotel · Standard</span></div>
-    </div></div>
-
-    <div class="day"><div class="date"><b>27</b>Fri</div><div class="body">
-      <h3>Lake Clark bear-viewing day</h3>
-      <ul class="tl">
-        <li><span class="t">All day</span><span>Lake Clark National Park Bear Viewing Day, 10-hour tour from Anchorage<span class="bk">Booked</span></span></li>
-      </ul>
-      <p>Floatplane across Cook Inlet to Lake Clark. Late August is prime bear season there.</p>
-      <div class="tags"><span class="tag act">Floatplane · bears</span><span class="tag stay">The Wildbirch Hotel</span></div>
-      <div class="flag">Small-plane tours can be cancelled on the day for weather. Aug 28 is now taken by the food tour, so there's no backup day.</div>
-    </div></div>
-
-    <div class="day"><div class="date"><b>28</b>Sat</div><div class="body">
-      <h3>Anchorage food &amp; history · fly home</h3>
-      <ul class="tl">
-        <li><span class="t">10:00 AM</span><span>Anchorage Downtown Walking Food and History Tour, 3 hours<span class="bk">Booked</span></span></li>
-        <li><span class="t">~1:00 PM</span><span>Tour ends downtown; check-out, airport</span></li>
-        <li><span class="t">PM</span><span>Fly home. Pick a departure after about 3:00 PM, or a red-eye</span></li>
-      </ul>
-      <div class="tags"><span class="tag act">Food tour</span><span class="tag move">Flight · to book</span></div>
-    </div></div>
-
-  </div>
-</section>
-
-<section id="booking">
-  <h2>Booking</h2>
-  <p class="intro">Booked as one custom package with Alaska Tours (agent: Abby Wells). It covers all hotels, the four GoldStar rail legs, and the tours below. Flights and the Seward fishing trip are separate. <a href="content/Jones_Proposal_Nov_3_90259.pdf" target="_blank" rel="noopener">Booking proposal (PDF)</a></p>
-  <div class="tablewrap"><table>
-    <thead><tr><th>Date</th><th>Item</th><th>Detail</th><th>Status</th></tr></thead>
-    <tbody>
-      <tr><td>Aug 19</td><td>Pike's Waterfront Lodge, Fairbanks</td><td>Chena River Room · 1 night</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 20</td><td>Train Fairbanks → Denali</td><td>GoldStar dome</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 20</td><td>Denali Wilderness Adventure ATV Tour</td><td>Single ATV · 3:00 PM</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 20</td><td>Grande Denali Lodge</td><td>Standard Room · 2 nights</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 21</td><td>Heli Hiking Adventure</td><td>10:35 AM · under 250 lb each</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 21</td><td>Wilderness Wonders off-trail walk</td><td>4 hours · 5:00 PM</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 22</td><td>Train Denali → Anchorage</td><td>GoldStar dome</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 22</td><td>Hotel Captain Cook, Anchorage</td><td>Deluxe Room · 1 night</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 23</td><td>Train Anchorage → Seward</td><td>GoldStar dome</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 23</td><td>Harbor 360 Hotel, Seward</td><td>Harbor View Room, no balcony · 1 night</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 23</td><td>J-Dock half-day fishing</td><td>Afternoon · separate booking</td><td><span class="v opt">Option</span></td></tr>
-      <tr><td>Aug 24</td><td>Kenai Fjords Glacier Lodge</td><td>2-night stay from Seward</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 26</td><td>Train Seward → Anchorage</td><td>GoldStar dome</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 26</td><td>The Wildbirch Hotel, Anchorage</td><td>Standard Room · 2 nights</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 27</td><td>Lake Clark Bear Viewing Day</td><td>10-hour tour from Anchorage</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 28</td><td>Downtown Food and History Tour</td><td>3 hours · 10:00 AM</td><td><span class="v bkd">Booked</span></td></tr>
-      <tr><td>Aug 19 / 28</td><td>Flights</td><td>To Fairbanks · from Anchorage</td><td><span class="v todo">To book</span></td></tr>
-    </tbody>
-  </table></div>
-  <dl class="terms">
-    <div><dt>Payments</dt><dd>Deposit due Nov 5, 2026. Final balance due Jun 20, 2027.</dd></div>
-    <div><dt>Not included</dt><dd>Airfare, local transfers, meals unless noted, gratuities, fishing license and king salmon stamp, travel insurance.</dd></div>
-    <div><dt>Travel documents</dt><dd>Daily itinerary and vouchers arrive 2–4 weeks before the trip.</dd></div>
-    <div><dt>Cancellation</dt><dd>Fees apply for any reason, including flight cancellations or illness. Lodge stays and bear-viewing trips carry special terms.</dd></div>
-  </dl>
-</section>
-
-<section id="stays">
-  <h2>Stays</h2>
-  <div class="stays">
-    <div class="card"><span class="chip">Aug 19 · Fairbanks · Chena River Room</span>
-      <h3><a href="https://www.alaska.org/detail/pikes-waterfront-lodge" target="_blank" rel="noopener">Pike's Waterfront Lodge</a></h3>
-      <p>On the Chena River near FAI. Free 24/7 airport and train-depot shuttle, breakfast buffet, and Pike's Landing next door for dinner.</p></div>
-    <div class="card"><span class="chip">Aug 20–22 · Denali · Standard Room</span>
-      <h3><a href="https://grandedenalilodgealaska.com/" target="_blank" rel="noopener">Grande Denali Lodge</a></h3>
-      <p>On Sugarloaf Mountain a mile north of the park entrance. Alpenglow Restaurant. A courtesy shuttle runs to the depot and the visitor center.</p></div>
-    <div class="card"><span class="chip">Aug 22 · Anchorage · Deluxe Room</span>
-      <h3><a href="https://www.captaincook.com/" target="_blank" rel="noopener">Hotel Captain Cook</a></h3>
-      <p>Historic Hotels of America member, three towers, inlet or mountain views. Home of the Crow's Nest restaurant on the top floor.</p></div>
-    <div class="card"><span class="chip">Aug 23 · Seward · Harbor View</span>
-      <h3><a href="https://www.alaska.org/detail/seward-harbor-360-hotel" target="_blank" rel="noopener">Harbor 360 Hotel</a></h3>
-      <p>On the Small Boat Harbor, a block from the depot and close to J-Dock on 4th Ave. Pool, free shuttle, continental breakfast.</p></div>
-    <div class="card"><span class="chip">Aug 24–26 · Kenai Fjords · 2 nights</span>
-      <h3><a href="https://www.alaskawildland.com/lodges/kenai-fjords-glacier-lodge/" target="_blank" rel="noopener">Kenai Fjords Glacier Lodge</a></h3>
-      <p>Alaska Wildland Adventures. 16 log cabins facing Pedersen Glacier inside the national park. Boat in and out from Seward; meals and guided activities included.</p></div>
-    <div class="card"><span class="chip">Aug 26–28 · Anchorage · Standard Room</span>
-      <h3><a href="https://www.hyatt.com/en-US/hotel/alaska/the-wildbirch-hotel/ancjd" target="_blank" rel="noopener">The Wildbirch Hotel</a></h3>
-      <p>JdV by Hyatt, opened 2025, at 239 W 4th Ave in the Mushing District. Walkable to the depot, the museum and the food tour. Crimson restaurant.</p></div>
-  </div>
-</section>
-
-<section>
-  <h2>Flights</h2>
-  <div class="flights">
-    <div class="flt">
-      <h3>Outbound · Thu Aug 19</h3>
-      <div class="leg"><div><div class="code">RDU</div><div class="t">morning</div></div><div class="line"><span>1 stop</span></div><div style="text-align:right"><div class="code">FAI</div><div class="t">by ~8 PM</div></div></div>
-      <p>No nonstop. A daytime 1-stop via Seattle, Minneapolis, Denver or Chicago. Avoid the evening departures that land 12:30–2:40 AM.</p>
-      <div class="meta">Not booked · next step</div>
-    </div>
-    <div class="flt">
-      <h3>Return · Sat Aug 28</h3>
-      <div class="leg"><div><div class="code">ANC</div><div class="t">after ~3 PM</div></div><div class="line"><span>1 stop</span></div><div style="text-align:right"><div class="code">RDU</div><div class="t">Aug 29</div></div></div>
-      <p>The food tour runs 10 AM to about 1 PM. A late-afternoon departure or a red-eye both work.</p>
-      <div class="meta">Not booked · next step</div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Open Items</h2>
-  <ol class="items">
-    <li><span><b>Flights:</b> book into FAI on Aug 19, landing by early evening, and out of ANC on Aug 28 after about 3 PM. Send the times to Alaska Tours.</span></li>
-    <li><span><b>Fishing, Aug 23 (option):</b> call J-Dock (907-224-3300) to confirm an afternoon half-day salmon/rockfish trip after the 11:05 train, or price a private charter. Buy Alaska fishing licenses online beforehand.</span></li>
-    <li><span><b>Deposit:</b> due Nov 5, 2026. Confirm it went through.</span></li>
-    <li><span><b>Travel insurance:</b> usually has to be bought within 14 days of the deposit (by about Nov 19, 2026).</span></li>
-    <li><span><b>Final balance:</b> due Jun 20, 2027.</span></li>
-    <li><span><b>Heli-hike:</b> booked for passengers under 250 lb each; have weights ready.</span></li>
-    <li><span><b>Lodge luggage:</b> ask Kenai Fjords Glacier Lodge about bag limits on the boat; store the rest at the Harbor 360 or in Anchorage.</span></li>
-    <li><span><b>Train times:</b> times shown are 2026 schedules. Check them against the 2027 vouchers when they arrive.</span></li>
-  </ol>
-</section>
-
-<section id="links">
   <h2>Links</h2>
   <ul class="links">
-    <li><a href="content/Jones_Proposal_Nov_3_90259.pdf" target="_blank" rel="noopener">Booking proposal (PDF)</a><span>Alaska Tours · issued Nov 3, 2026</span></li>
-    <li><a href="https://www.alaskatours.com/" target="_blank" rel="noopener">Alaska Tours</a><span>mytrip@alaskatours.com · (907) 277 3000 · 866 317 3325</span></li>
-    <li><a href="https://www.jdockcompany.com/" target="_blank" rel="noopener">J-Dock Sport Fishing</a><span>1406 4th Ave, Seward · 907-224-3300</span></li>
-    <li><a href="https://www.jdockcompany.com/copy-of-charters-packages" target="_blank" rel="noopener">J-Dock charters &amp; rates</a><span>Half-day salmon/rockfish · private charters</span></li>
-    <li><a href="https://www.alaskarailroad.com/ride-a-train/our-trains/denali-star" target="_blank" rel="noopener">Denali Star train</a><span>FAI 8:20 AM → Denali 12:10 PM · Denali 12:30 PM → ANC 8:00 PM</span></li>
-    <li><a href="https://alaska.org/detail/coastal-classic-train" target="_blank" rel="noopener">Coastal Classic</a><span>ANC 6:45 AM → Seward 11:05 AM · Seward 6:00 PM → ANC 10:15 PM</span></li>
-    <li><a href="https://www.alaskarailroad.com/travel-planning/onboard-experience/goldstar-service" target="_blank" rel="noopener">GoldStar Service</a><span>Denali Star &amp; Coastal Classic</span></li>
-    <li><a href="https://www.alaskawildland.com/lodges/one-lodge-kfgl/" target="_blank" rel="noopener">Kenai Fjords Glacier Lodge package</a><span>Boat 10 AM from Seward · back 5–5:30 PM</span></li>
-    <li><a href="https://www.alaska.org/detail/pikes-waterfront-lodge" target="_blank" rel="noopener">Pike's Waterfront Lodge</a><span>Fairbanks · depot shuttle</span></li>
-    <li><a href="https://www.alaska.org/detail/grande-denali-lodge" target="_blank" rel="noopener">Grande Denali Lodge</a><span>Denali</span></li>
-    <li><a href="https://www.captaincook.com/" target="_blank" rel="noopener">Hotel Captain Cook</a><span>Anchorage</span></li>
-    <li><a href="https://www.alaska.org/detail/seward-harbor-360-hotel" target="_blank" rel="noopener">Harbor 360 Hotel</a><span>Seward Small Boat Harbor</span></li>
-    <li><a href="https://www.hyatt.com/en-US/hotel/alaska/the-wildbirch-hotel/ancjd" target="_blank" rel="noopener">The Wildbirch Hotel</a><span>JdV by Hyatt · 239 W 4th Ave</span></li>
+    <li><a href="alaska.html"><b>Alaska Rail &amp; Fjords 2027</b><span>Trip itinerary · Aug 19–28, 2027</span></a></li>
+    <li><a href="https://www.sunsaartisan.com/" target="_blank" rel="noopener"><b>Sunsa Artisan</b><span>sunsaartisan.com</span></a></li>
+    <li><a href="https://www.sahasahouse.com/" target="_blank" rel="noopener"><b>Mini Golf &amp; Bar</b><span>sahasahouse.com</span></a></li>
+    <li><a href="https://www.thecacaoestate.com/" target="_blank" rel="noopener"><b>The Cacao Estate</b><span>thecacaoestate.com</span></a></li>
+    <li><a href="https://8hourstartuproadmap.com/" target="_blank" rel="noopener"><b>8 Hour Startup Roadmap</b><span>8hourstartuproadmap.com</span></a></li>
+    <li><a href="https://jonesassets.netlify.app/" target="_blank" rel="noopener"><b>Jones Assets</b><span class="lock">jonesassets.netlify.app · password</span></a></li>
   </ul>
 </section>
 
-<footer>Bookings from the Alaska Tours proposal issued Nov 3, 2026. Train times are 2026 schedules; re-verify against 2027 vouchers. Map is schematic.</footer>
+<section>
+  <h2>Projects</h2>
+  <div class="projects">
+
+    <article class="proj">
+      <div>
+        <h3><a href="/">evanllewellynjones.com</a></h3>
+        <div class="url">this site</div>
+        <p>Home base for personal pages and the hub that links to every other project. Each page is a single self-contained HTML file. The first one was the Alaska 2027 itinerary.</p>
+      </div>
+      <dl class="mgmt">
+        <dt>Repo</dt><dd><code>evanllewellynjones/evanllewellynjones</code> on the EJ Personal GitHub (public)</dd>
+        <dt>Hosting</dt><dd>GitHub Pages, serves <code>main</code> at the repo root. Domain registered at Namecheap.</dd>
+        <dt>Access</dt><dd>Public, no password</dd>
+        <dt>Updates</dt><dd>Pages built in Claude, committed to the repo</dd>
+      </dl>
+    </article>
+
+    <article class="proj">
+      <div>
+        <h3><a href="https://www.sunsaartisan.com/" target="_blank" rel="noopener">Sunsa Artisan</a></h3>
+        <div class="url">sunsaartisan.com</div>
+        <p>A painting studio notebook, organized as studies such as the Rocks study. Each study covers technique, color mixes and process, with photos of the work.</p>
+      </div>
+      <dl class="mgmt">
+        <dt>Repo</dt><dd><code>evanllewellynjones/sunsa</code> (public)</dd>
+        <dt>Content</dt><dd>One markdown file per study in <code>content/</code>, rendered by a shared <code>topic.html</code> template</dd>
+        <dt>Images</dt><dd>Cloudinary. Photos tagged with a study's name (e.g. <code>rocks</code>) appear on that page automatically.</dd>
+        <dt>Updates</dt><dd>Content and HTML edits made in Claude chat, then uploaded to the repo</dd>
+      </dl>
+    </article>
+
+    <article class="proj">
+      <div>
+        <h3><a href="https://www.sahasahouse.com/" target="_blank" rel="noopener">Mini Golf &amp; Bar</a></h3>
+        <div class="url">sahasahouse.com</div>
+        <p>Business plan workbook for a mini golf course and bar in a 1948 warehouse at 806 E Ramseur St, Durham: 9 covered holes inside, 9 in the yard, a bar, ice cream kiosk and food truck court. Covers the property, capex, competition, revenue, labor and P&amp;L, feeding a separate Excel model.</p>
+      </div>
+      <dl class="mgmt">
+        <dt>Repo</dt><dd><code>evanllewellynjones/Mini_Golf</code> (public)</dd>
+        <dt>Domain</dt><dd>sahasahouse.com</dd>
+        <dt>Model</dt><dd>Figures are planning estimates; the full P&amp;L lives in Excel</dd>
+      </dl>
+    </article>
+
+    <article class="proj">
+      <div>
+        <h3><a href="https://www.thecacaoestate.com/" target="_blank" rel="noopener">The Cacao Estate</a></h3>
+        <div class="url">thecacaoestate.com</div>
+        <p>Concept site for a wine bar and chocolate atelier at NOVUS in Durham, with wine, chocolate and tasting pairings. Includes an interactive floor plan with room-level equipment, seating and square footage, and links to the architectural, MEP and budget documents.</p>
+      </div>
+      <dl class="mgmt">
+        <dt>Repo</dt><dd><code>evanllewellynjones/thecacaoestate</code> (public)</dd>
+        <dt>Domain</dt><dd>thecacaoestate.com</dd>
+        <dt>Status</dt><dd>Some sub-pages (food, staff, marketing) still in development</dd>
+      </dl>
+    </article>
+
+    <article class="proj">
+      <div>
+        <h3><a href="https://8hourstartuproadmap.com/" target="_blank" rel="noopener">8 Hour Startup Roadmap</a></h3>
+        <div class="url">8hourstartuproadmap.com</div>
+        <p>A reference guide for launching a consumer product, service or software business in eight stages, grouped into Creation &amp; Concept, Messaging &amp; Marketing, and Execution. Supporting tools include Shopify and app build guides, ad platform setup, 3PL and Amazon resources, and a ROAS calculator.</p>
+      </div>
+      <dl class="mgmt">
+        <dt>Repo</dt><dd><code>evanllewellynjones/8hourstartup</code> (public)</dd>
+        <dt>Domain</dt><dd>8hourstartuproadmap.com</dd>
+      </dl>
+    </article>
+
+    <article class="proj">
+      <div>
+        <h3><a href="https://jonesassets.netlify.app/" target="_blank" rel="noopener">Jones Assets</a></h3>
+        <div class="url">jonesassets.netlify.app · password-protected</div>
+        <p>Private family finance dashboard. Monthly financial commentary and household spending reports are written in two Claude Projects, then published here as HTML pages.</p>
+      </div>
+      <dl class="mgmt">
+        <dt>Repo</dt><dd>None, on purpose. Files are dropped straight into Netlify so nothing sits in a GitHub repo.</dd>
+        <dt>Access</dt><dd>Netlify password. A link from here doesn't expose it.</dd>
+        <dt>Commentary</dt><dd><b>Monthly Financial Commentaries</b> (Claude Project): produces each month's written financial commentary</dd>
+        <dt>Spending</dt><dd><b>Jones Spending</b> (Claude Project): tracks and summarizes household spending</dd>
+        <dt>Updates</dt><dd>Updated pages are deployed by drag-and-drop in Netlify</dd>
+      </dl>
+    </article>
+
+  </div>
+</section>
+
+<footer>Updated Nov 2026</footer>
 </div>
 </body>
 </html>
