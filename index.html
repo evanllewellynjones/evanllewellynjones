@@ -157,7 +157,14 @@ footer{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
       <dl class="mgmt">
         <dt>Repo</dt><dd>None, on purpose. Files are dropped straight into Netlify so nothing sits in a GitHub repo.</dd>
         <dt>Access</dt><dd>Netlify password. A link from here doesn't expose it.</dd>
-        <dt>Commentary</dt><dd><b>Monthly Financial Commentaries</b> (Claude Project): produces each month's written financial commentary</dd>
+        <dt>Commentary</dt><dd><b>Monthly Financial Commentaries</b> (Claude Project). Each month:
+          <ol class="steps">
+            <li><b>Inputs.</b> One Bloomberg portfolio PDF with month-end prices and contribution; check that MTD is correct. Last month's commentaries are uploaded as the template.</li>
+            <li><b>Build.</b> Python with <code>python-docx</code> and <code>helpers.py</code> builds four separate .docx files.</li>
+            <li><b>Review.</b> Evan reviews the .docx files and creates the final PDFs.</li>
+            <li><b>Publish.</b> PDFs go in <code>Jones/</code>, <code>Kiran/</code>, <code>Morgan/</code> and <code>Dylan/</code>. Add the month to <code>trusts.html</code> (top of each <code>investments</code> array) and <code>investment_checking.html</code> (<code>JONES</code> grid), bump the Updated dates, and drag the whole folder onto Netlify.</li>
+            <li><b>Send.</b> Evan emails the family with a link to Jones Assets.</li>
+          </ol></dd>
         <dt>Spending</dt><dd><b>Jones Spending</b> (Claude Project). Each month the updated workbook goes in, with the 2026 Expenses tab filled through the month just closed. Two outputs:
           <ol class="steps">
             <li><b>Dashboard.</b> <code>build.py</code> reruns on the whole 2026 tab, because earlier months get adjusted, and rebuilds <code>2026_spending_review.html</code>. It ships only when the four reconciliation checks pass and every category × month matches workbook columns K–V.</li>
